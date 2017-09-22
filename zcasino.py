@@ -13,13 +13,13 @@ while continue_game:
 
         try:
             nb_mise = int(nb_mise)
-            nb_mise = -1
         except ValueError:
             print("Vous n'avez pas saisi un nombre")
+            nb_mise = -1
             continue
         if nb_mise < 0:
             print("Ce nombre est négatif")
-        if nb_mise > 0:
+        if nb_mise > 49:
             print("Ce nombre est trop grand")
 
     mise = 0
@@ -43,11 +43,23 @@ while continue_game:
     print("Et le numéro gagnant est le ...", win_number)
 
     if win_number == nb_mise:
-        print("Vous avez misé sur le bon numéro, vous gagnez 3 fois votre mise, votre solde est de ", 3 * mise)
-        argent += 3 * mise
-    elif win_number % 2 == 0 and nb_mise % 2 == 0 or win_number % 2 == 1 and nb_mise % 2 == 1:
-        print("Vous avez la bonne couleur, je vous rend donc la moitié de votre mise, votre solde est de ", mise / 2)
-        argent += mise / 2
+        print("Vous avez misé sur le bon numéro, vous gagnez 3 fois votre mise, soit ", 3 * mise)
+        argent += mise * 3
+    elif win_number % 2 == nb_mise % 2:
+        mise = ceil(mise * 0.5)
+        print("Vous avez la bonne couleur, je vous rend donc la moitié de votre mise, soit ", mise / 2)
+        argent += mise
     else:
         argent -= mise
-        print("Vous avez perdu, votre solde est de : ", argent)
+        print("Vous avez perdu votre mise : ")
+
+    if argent <= 0:
+        print("Vous êtes ruiné, la partie est terminée")
+        continue_game = False
+    else:
+        print("Votre solde est de : ", argent)
+        print()
+        quit = input("Voulez-vous quitter la partie ? O/N ")
+        if quit == "o" or quit == "O":
+            print("Vous quittez le casino avec ", argent)
+            continue_game = False
