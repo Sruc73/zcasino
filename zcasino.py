@@ -36,3 +36,8 @@ while continue_game:
             print("La mise saisie est négative ou nulle")
         if mise > argent:
             print("Vous tentez de miser plus que l'argent dont vous disposez")
+
+    win_number = randrange(50)
+    print("Rien ne va plus...")
+    print("La roulette tourne, ...")
+    print("Et le numéro gagnant est le ...", win_number)
