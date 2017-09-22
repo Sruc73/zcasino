@@ -46,8 +46,9 @@ while continue_game:
         print("Vous avez misé sur le bon numéro, vous gagnez 3 fois votre mise, soit ", 3 * mise)
         argent += mise * 3
     elif win_number % 2 == nb_mise % 2:
+        argent -= mise
         mise = ceil(mise * 0.5)
-        print("Vous avez la bonne couleur, je vous rend donc la moitié de votre mise, soit ", mise / 2)
+        print("Vous avez la bonne couleur, je vous rend donc la moitié de votre mise, soit ", mise)
         argent += mise
     else:
         argent -= mise
