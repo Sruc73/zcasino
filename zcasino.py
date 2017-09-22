@@ -41,3 +41,13 @@ while continue_game:
     print("Rien ne va plus...")
     print("La roulette tourne, ...")
     print("Et le numéro gagnant est le ...", win_number)
+
+    if win_number == nb_mise:
+        print("Vous avez misé sur le bon numéro, vous gagnez 3 fois votre mise, votre solde est de ", 3 * mise)
+        argent += 3 * mise
+    elif win_number % 2 == 0 and nb_mise % 2 == 0 or win_number % 2 == 1 and nb_mise % 2 == 1:
+        print("Vous avez la bonne couleur, je vous rend donc la moitié de votre mise, votre solde est de ", mise / 2)
+        argent += mise / 2
+    else:
+        argent -= mise
+        print("Vous avez perdu, votre solde est de : ", argent)
